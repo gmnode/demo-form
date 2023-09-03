@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на демо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .input-field>label.position_unset{
+            position: unset;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="your_server_endpoint_here" method="post">
+        <div class="input-field">
+            <input type="text" id="demo-name" name="name" required>
+            <label for="demo-name">Имя</label>
+        </div>
+
+        <div class="input-field">
+            <input type="text" id="demo-surname" name="surname" required>
+            <label for="demo-surname">Фамилия</label>
+        </div>
+
+        <div class="input-field">
+            <input type="email" id="demo-email" name="email" required>
+            <label for="demo-email">Email</label>
+        </div>
+
+        <div class="input-field">
+            <input type="text" id="demo-company" name="company" required>
+            <label for="demo-company">Имя компании</label>
+        </div>
+
+        <div class="input-field">
+            <select id="company_size" name="company_size">
+                <option value="" disabled selected>Выберите размер компании</option>
+                <option value="1">Solo</option>
+                <option value="2-10">2-10</option>
+                <option value="11-50">11-50</option>
+                <option value="51-200">51-200</option>
+                <option value="201-500">201-500</option>
+                <option value="501-1000">501-1000</option>
+                <option value="1001+">1001+</option>
+            </select>
+            <label>Размер компании</label>
+        </div>
+
+        <div class="input-field">
+            <input type="tel" id="demo-phone" name="phone" required>
+            <label for="demo-phone" class="position_unset">Телефон</label>
+        </div>
+
+        <button class="btn waves-effect waves-light" type="submit">Записаться на демо</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const phoneInput = document.querySelector("#demo-phone");
+            intlTelInput(phoneInput, {
+                preferredCountries: ["ru", "us"],
+                separateDialCode: true,
+            });
+
+            const elems = document.querySelectorAll('select');
+            const instances = M.FormSelect.init(elems);
+        });
+    </script>
+
+</body>
+
+</html>
